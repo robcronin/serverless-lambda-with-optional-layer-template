@@ -13,7 +13,7 @@ layerName="$(echo $layerArn | cut -d':' -f7)"
 
 echo ''
 echo 'ℹ️  Adding path to webpack.config.js ℹ️'
-sed -i.bak "s/nodeExternals()/nodeExternals(), 'opt\/$layerName'/" webpack.config.js && rm webpack.config.js.bak
+sed -i.bak "s/nodeExternals()/nodeExternals(), '\/opt\/$layerName'/" webpack.config.js && rm webpack.config.js.bak
 echo ''
 
 serverlessLine="$(grep -n 'layers' serverless.yml | cut -f1 -d:)"
