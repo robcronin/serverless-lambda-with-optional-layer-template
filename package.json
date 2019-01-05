@@ -5,7 +5,8 @@
   "main": "handler.js",
   "scripts": {
     "deploy": "sls deploy",
-    "test": "jest"
+    "lint": "eslint .",
+    "test": "yarn lint && yarn jest"
   },
   "author": "",
   "license": "MIT",
@@ -25,6 +26,9 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-source-map-support": "^2.0.1",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "jest": "^23.6.0",
     "serverless-offline": "^3.31.3",
     "serverless-webpack": "^5.2.0",
