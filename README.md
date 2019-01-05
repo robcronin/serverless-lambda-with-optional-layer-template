@@ -1,129 +1,55 @@
-# Serverless Node.js Starter
+# Serverless Lambda Template with optional Layer support
 
-A Serverless starter that adds ES7 syntax, serverless-offline, environment variables, and unit test support. Part of the [Serverless Stack](http://serverless-stack.com) guide.
+This repo is derived from [AnomalyInnovations/serverless-nodejs-starter](https://github.com/AnomalyInnovations/serverless-nodejs-starter)
 
-[Serverless Node.js Starter](https://github.com/AnomalyInnovations/serverless-nodejs-starter) uses the [serverless-webpack](https://github.com/serverless-heaven/serverless-webpack) plugin, [Babel](https://babeljs.io), [serverless-offline](https://github.com/dherault/serverless-offline), and [Jest](https://facebook.github.io/jest/). It supports:
+It provides the set up to create an AWS lambda with serverless using babel 7 that is set up to use layers
 
-- **ES7 syntax in your handler functions**
-  - Use `import` and `export`
-- **Package your functions using Webpack**
-- **Run API Gateway locally**
-  - Use `serverless offline start`
-- **Support for unit tests**
-  - Run `npm test` to run your tests
-- **Sourcemaps for proper error messages**
-  - Error message show the correct line numbers
-  - Works in production with CloudWatch
-- **Automatic support for multiple handler files**
-  - No need to add a new entry to your `webpack.config.js`
-- **Add environment variables for your stages**
+You can create a layer via https://github.com/robcronin/serverless-lambda-with-optional-layer-template
 
----
-
-### Demo
-
-A demo version of this service is hosted on AWS - [`https://z6pv80ao4l.execute-api.us-east-1.amazonaws.com/dev/hello`](https://z6pv80ao4l.execute-api.us-east-1.amazonaws.com/dev/hello)
-
-And here is the ES7 source behind it
-
-``` javascript
-export const hello = async (event, context) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: `Go Serverless v1.0! ${(await message({ time: 1, copy: 'Your function executed successfully!'}))}`,
-      input: event,
-    }),
-  };
-};
-
-const message = ({ time, ...rest }) => new Promise((resolve, reject) =>
-  setTimeout(() => {
-    resolve(`${rest.copy} (with a delay)`);
-  }, time * 1000)
-);
-```
-
-### Requirements
+## Requirements
 
 - [Install the Serverless Framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
 - [Configure your AWS CLI](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
 
-### Installation
+## Install
 
-To create a new Serverless project.
 
-``` bash
-$ serverless install --url https://github.com/AnomalyInnovations/serverless-nodejs-starter --name my-project
+```
+sls install --url https://github.com/robcronin/serverless-lambda-with-optional-layer-template --name [NAME_OF_YOUR_LAMBDA]
 ```
 
-Enter the new directory
+or 
 
-``` bash
-$ cd my-project
+```
+git clone https://github.com/robcronin/serverless-lambda-with-optional-layer-template
 ```
 
-Install the Node.js packages
+- `cd [NAME_OF_YOUR_LAMBDA]`
+- `yarn`
+- `./setUp.sh` - answer the prompts
 
-``` bash
-$ npm install
-```
+## Modify
 
-### Usage
+Edit the code in `handler.js` as required
 
-To run unit tests on your local
+By default it is a simple hello function
 
-``` bash
-$ npm test
-```
+## Deploy
 
-To run a function on your local
+- `yarn deploy`
+    - This will run `sls deploy` assuming your aws credentials are set up
 
-``` bash
-$ serverless invoke local --function hello
-```
 
-To simulate API Gateway locally using [serverless-offline](https://github.com/dherault/serverless-offline)
+## Local usage
 
-``` bash
-$ serverless offline start
-```
+- Running `sls offline start` will allow you to ping `localhost:3000/hello`
 
-Run your tests
 
-``` bash
-$ npm test
-```
+## Tests
 
-We use Jest to run our tests. You can read more about setting up your tests [here](https://facebook.github.io/jest/docs/en/getting-started.html#content).
+- `yarn jest`
 
-Deploy your project
+## Adding a layer
 
-``` bash
-$ serverless deploy
-```
-
-Deploy a single function
-
-``` bash
-$ serverless deploy function --function hello
-```
-
-To add another function as a new file to your project, simply add the new file and add the reference to `serverless.yml`. The `webpack.config.js` automatically handles functions in different files.
-
-To add environment variables to your project
-
-1. Rename `env.example` to `env.yml`.
-2. Add environment variables for the various stages to `env.yml`.
-3. Uncomment `environment: ${file(env.yml):${self:provider.stage}}` in the `serverless.yml`.
-4. Make sure to not commit your `env.yml`.
-
-### Support
-
-- Send us an [email](mailto:contact@anoma.ly) if you have any questions
-- Open a [new issue](https://github.com/AnomalyInnovations/serverless-nodejs-starter/issues/new) if you've found a bug or have some suggestions.
-- Or submit a pull request!
-
-### Maintainers
-
-Serverless Node.js Starter is maintained by Frank Wang ([@fanjiewang](https://twitter.com/fanjiewang)) & Jay V ([@jayair](https://twitter.com/jayair)). [**Subscribe to our newsletter**](http://eepurl.com/cEaBlf) for updates. Send us an [email](mailto:contact@anoma.ly) if you have any questions.
+- If you created a layer with https://github.com/robcronin/serverless-layer-template you can use `./addLayer.sh` to set up your lambda to use it
+- In your layer repo you can use `./local.sh` to create a local version of your lambda at `/opt`
