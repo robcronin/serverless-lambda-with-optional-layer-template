@@ -28,7 +28,6 @@ provider:
   #
   #environment: ${file(env.yml):${self:provider.stage}}
 
-
 functions:
   hello:
     handler: handler.hello

@@ -13,12 +13,11 @@ You can create a layer via https://github.com/robcronin/serverless-layer-templat
 
 ## Install
 
-
 ```
 sls install --url https://github.com/robcronin/serverless-lambda-with-optional-layer-template --name [NAME_OF_YOUR_LAMBDA]
 ```
 
-or 
+or
 
 ```
 git clone https://github.com/robcronin/serverless-lambda-with-optional-layer-template
@@ -37,13 +36,11 @@ By default it is a simple hello function
 ## Deploy
 
 - `yarn deploy`
-    - This will run `sls deploy` assuming your aws credentials are set up
-
+  - This will run `sls deploy` assuming your aws credentials are set up
 
 ## Local usage
 
 - Running `sls offline start` will allow you to ping `localhost:3000/hello`
-
 
 ## Tests
 
