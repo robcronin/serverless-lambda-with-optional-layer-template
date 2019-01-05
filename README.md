@@ -4,7 +4,7 @@ This repo is derived from [AnomalyInnovations/serverless-nodejs-starter](https:/
 
 It provides the set up to create an AWS lambda with serverless using babel 7 that is set up to use layers
 
-You can create a layer via https://github.com/robcronin/serverless-lambda-with-optional-layer-template
+You can create a layer via https://github.com/robcronin/serverless-layer-template
 
 ## Requirements
 
