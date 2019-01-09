@@ -36,4 +36,7 @@ functions:
           path: hello
           method: get
     # layers:
-    #   - [YOUR ARN HERE]
+    #   - {
+    #       'Fn::Join':
+    #         [':', ['arn:aws:lambda:eu-west-1', Ref: 'AWS::AccountId', 'layer:YOUR_LAYER_NAME_HERE:1']],
+    #     }
