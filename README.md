@@ -8,6 +8,8 @@ It provides the set up to create an AWS lambda with serverless using babel 7 tha
 
 You can create a layer via https://github.com/robcronin/serverless-layer-template
 
+For an example repo of a lambda with a layer created with these templates see [here](https://github.com/robcronin/lambda-with-layer-example)
+
 ## Requirements
 
 - [Install the Serverless Framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
