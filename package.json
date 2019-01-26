@@ -6,6 +6,7 @@
   "scripts": {
     "deploy": "sls deploy",
     "lint": "eslint .",
+    "start": "sls offline start",
     "test": "yarn lint && yarn jest"
   },
   "author": "",
