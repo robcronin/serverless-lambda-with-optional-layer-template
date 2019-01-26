@@ -56,4 +56,4 @@ By default it is a simple hello function
 ## Adding a layer
 
 - If you created a layer with https://github.com/robcronin/serverless-layer-template you can use `./addLayer.sh` to set up your lambda to use it
-- In your layer repo you can use `./local.sh` to create a local version of your lambda at `/opt`
+- In your layer repo you can use `./local.sh` to create a local version of your lambda at `/opt` or use `yarn watch` to watch any changes and update your local version as you develop your layer
